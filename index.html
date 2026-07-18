@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de la Suerte</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">Ruleta de la Suerte</h1>
+            <p class="app-subtitle">Ingresa los numeros y gira para ganar</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-panel">
+                <h2 class="panel-title">Lista de Numeros</h2>
+                <div class="textarea-wrapper">
+                    <textarea id="numberInput" placeholder="Ingresa un numero por linea (max. 1000)&#10;Ejemplo:&#10;1&#10;2&#10;3&#10;..." maxlength="50000"></textarea>
+                </div>
+                <div class="input-controls">
+                    <div class="entry-counter">
+                        <span id="entryCount">0</span> / 1000 entradas
+                    </div>
+                    <div class="input-buttons">
+                        <button id="loadSampleBtn" class="btn btn-secondary">Cargar Ejemplo</button>
+                        <button id="clearAllBtn" class="btn btn-danger">Limpiar Todo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wheel-panel">
+                <div class="wheel-container">
+                    <div class="pointer-container">
+                        <div class="pointer"></div>
+                    </div>
+                    <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                    <div class="center-circle">
+                        <span class="center-icon">&#9881;</span>
+                    </div>
+                </div>
+                <div class="spin-info">
+                    <span>Giro actual: <strong id="spinCount">0</strong></span>
+                </div>
+                <button id="spinBtn" class="btn btn-spin" disabled>
+                    <span class="spin-text">GIRAR</span>
+                    <span class="spin-icon">&#10227;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultado -->
+    <div id="resultModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-confetti" id="confetti"></div>
+            <div class="modal-header">
+                <h2 class="modal-title">Numero Ganador</h2>
+            </div>
+            <div class="modal-body">
+                <div class="winner-display">
+                    <span id="winnerNumber" class="winner-number">0</span>
+                </div>
+                <p class="modal-message">Felicidades! Este numero ha sido seleccionado.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="deleteNumberBtn" class="btn btn-delete">&#10006; Eliminar Numero</button>
+                <button id="closeModalBtn" class="btn btn-primary">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
